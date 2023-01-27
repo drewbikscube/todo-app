@@ -19,6 +19,8 @@ class TodoController extends Controller
     {
         $data = $request->validate([
             'task' => 'required'
+        ], [
+            'task.required' => 'Task is required'
         ]);
 
         Todo::create($data);
@@ -42,7 +44,7 @@ class TodoController extends Controller
     public function delete(Todo $todo)
     {
         $todo->delete();
-        
+
         return back();
     }
 }

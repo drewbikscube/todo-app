@@ -1,3 +1,4 @@
+# Setup
 
 Install Homebrew
 
@@ -18,9 +19,13 @@ Install Composer
 
 Navigate to the root directory `cd /todo-app`
 
-Run `composer install`
+`composer install`
 
-Run `php artisan migrate`
+`php artisan migrate`
 
-Run `php artisan serve`
+`php artisan serve`
 
+
+# To run tests
+
+`vendor/bin/phpunit`
