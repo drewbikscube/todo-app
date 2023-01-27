@@ -16,19 +16,19 @@
     <div class="container w-100 w-lg-50 mt-5">
         <div class="card shadow-sm">
             <div class="card-body">
-                <h3>Tasks</h3>
+                <h3 class="mb-3">Tasks</h3>
                 <form action="{{ route('create') }}" method="POST">
                     @csrf
                     <div class="input-group">
                         <input type="text" name="task" class="form-control" placeholder="Add a new task">
-                        <button type="submit" class="btn btn-dark btn-sm px-4 shadow-sm"><i class="fas fa-plus"></i></button>
+                        <button type="submit" class="btn btn-primary btn-sm px-4 shadow-sm"><i class="fas fa-plus"></i></button>
                     </div>
                 </form>
                 @if(count($todos))
                 <ul class="list-group list-group-flush mt-3">
                     @foreach ($todos as $todo)
                     <li class="list-group-item d-flex">
-                        <form class="w-100 d-flex flex-grow-2" action="{{ route('update', $todo->id) }}" method="POST">
+                        <form class="w-100 d-flex flex-grow-2 align-items-start" action="{{ route('update', $todo->id) }}" method="POST">
                             <div class="w-100">
                                 @if($todo->status == 'completed')
                                 <del>
@@ -42,13 +42,13 @@
                             @method('patch')
                             @if($todo->status == 'active')
                             <input type="hidden" name="status" value="completed">
-                            <button type="submit" class="btn btn-link btn-sm float-end"><i class="fas fa-check"></i></button>
+                            <button type="submit" class="btn btn-link btn-md float-end text-success"><i class="fas fa-check"></i></button>
                             @endif
                         </form>
-                        <form action="{{ route('delete', $todo->id) }}" method="POST">
+                        <form class="align-items-start" action="{{ route('delete', $todo->id) }}" method="POST">
                             @csrf
                             @method('delete')
-                            <button type="submit" class="btn btn-link btn-sm float-end" onclick='return confirm("Are you sure?");'><i class="fas fa-trash"></i></button>
+                            <button type="submit" class="btn btn-link btn-md float-end text-danger" onclick='return confirm("Are you sure?");'><i class="fas fa-trash"></i></button>
                         </form>
                     </li>
                     @endforeach
